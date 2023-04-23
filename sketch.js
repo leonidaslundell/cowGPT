@@ -15,7 +15,7 @@ function setup() {
   
   // clear the canvas each frame
   frameRate(2)
-  createCanvas(windowWidth, windowHeight)
+  createCanvas(800, windowHeight)
   
   // update textDisplayPosition
   textDisplayPosition = windowHeight - 100
