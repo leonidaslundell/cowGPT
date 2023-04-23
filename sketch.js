@@ -13,9 +13,9 @@ function setup() {
   cow = loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/2048px-ChatGPT_logo.svg.png')
   you = loadImage('https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png')
   
-  // clear the canvas each frame
+    // clear the canvas each frame
   frameRate(2)
-  createCanvas(800, windowHeight)
+  createCanvas(windowWidth, windowHeight)
   
   // update textDisplayPosition
   textDisplayPosition = windowHeight - 100
@@ -30,7 +30,7 @@ function setup() {
   sendButton.style('background-color', 'white')
   sendButton.style('border', 'white')
   sendButton.style('padding', '')
-  sendButton.position(windowWidth-155, height - 68)
+  sendButton.position(((windowWidth / 2)+(windowWidth / 3))-40, height - 68)
 
   // function to be called when the button is clicked
   sendButton.mousePressed(sendText)
