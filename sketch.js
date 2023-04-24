@@ -5,9 +5,6 @@ let textDisplayPosition
 let boxPosition = []
 let muply = ''
 
-let rectWidth = 800; // The starting width of the rectangle
-let rectHeight = 50; // The height of the rectangle
-
 let currentString = ''
 let currentCharacter = 0
 
@@ -80,8 +77,8 @@ function draw() {
   
   // itterates pver currentCharacter nu addig one and subsets muply.
   // currentString and currentCharacter are zerod in sendText
-  currentString = muply.substring(0, currentCharacter);
-  currentCharacter += 1;
+  currentString = muply.substring(0, currentCharacter)
+  currentCharacter += 1
   textAlign(LEFT, TOP)
   fill('white')
   text(currentString, inputBox.x, inputBox.y - 50)
