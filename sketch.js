@@ -1,13 +1,15 @@
 let inputBox
 let sendButton
 let textDisplay = ""
-let textDisplayPrevious
 let textDisplayPosition
 let boxPosition = []
+let muply = ''
 
 let rectWidth = 800; // The starting width of the rectangle
 let rectHeight = 50; // The height of the rectangle
 
+let currentString = ''
+let currentCharacter = 0
 
 function setup() {
   
@@ -60,9 +62,7 @@ function draw() {
     noStroke()
     fill("#434654")
     rect(0, boxPosition[i], windowWidth, 32)
-    rectMode(LEFT)
     image(you, inputBox.x - 40, boxPosition[i] + 2, 25, 25) 
-    rectMode(LEFT)
     image(cow, inputBox.x - 40, boxPosition[i] + 45, 25, 25) 
   }
 
@@ -73,23 +73,18 @@ function draw() {
   text(textDisplay, inputBox.x, textDisplayPosition)
   noStroke()
   
-  //check if the textDisplay has been changed
-  if(textDisplayPrevious == textDisplay){
-    // Draw the rectangles
-  //  for (let i = 0; i < 700; i++) {
-  //    let x = i;
-  //    rect(x, height/2 - rectHeight/2, 1, rectHeight);
-  //  }
-    // Shrink the rectangle
-  //  rectWidth -= 1; // Shrink the rectangle by 1 pixel
-
-    print('asd')  
-    textDisplayPrevious = ''
-  }
-}
-
-function fakeType() {
-  print('asd')
+  // create a box that obscures the text so that we can type in the answer.
+  // omg what a solution on top of a solution...
+  fill('#343541')
+  rect(inputBox.x, inputBox.y - 50, 300, 32)
+  
+  // itterates pver currentCharacter nu addig one and subsets muply.
+  // currentString and currentCharacter are zerod in sendText
+  currentString = muply.substring(0, currentCharacter);
+  currentCharacter += 1;
+  textAlign(LEFT, TOP)
+  fill('white')
+  text(currentString, inputBox.x, inputBox.y - 50)
 }
 
 function keyTyped() {
@@ -100,17 +95,20 @@ function keyTyped() {
 }
 
 function sendText() {
+  currentCharacter = 0
+  currentString = ''
+
   // retrieve the text entered in the input box
-  let text = inputBox.value()
-  let muply = randomMu()
+  query = inputBox.value()
+  muply = randomMu()
+  
   // clear the input box
   inputBox.value("")
 
   // add the text to the display string
-  textDisplay += "\n" + text + "\n"
+  textDisplay += "\n" + query + "\n"
   textDisplay += "\n" + muply + "\n"
   textDisplayPosition = textDisplayPosition - 80
-  textDisplayPrevious = textDisplay
   
   //move the box
   boxPosition.push(textDisplayPosition + 12)
